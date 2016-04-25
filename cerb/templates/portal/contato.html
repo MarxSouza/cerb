@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block titulo %}Contato{% endblock %}
+{% block conteudo %}
+<!--breadcrumbs start-->
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-sm-4">
+        <h1>
+          Contato
+        </h1>
+      </div>
+      <div class="col-lg-8 col-sm-8">
+        <ol class="breadcrumb pull-right">
+          <li>
+            <a href="{% url "portal:index" %}">
+              Inicio
+            </a>
+          </li>
+          <li class="active">
+            Contato
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!--breadcrumbs end-->
+
+
+
+<!--container start-->
+<div class="container">
+
+
+  <div class="row">
+    <div class="col-lg-5 col-sm-5 address">
+      <section class="contact-infos">
+        <h4 class="title custom-font text-black">
+          Endereço
+        </h4>
+        <address>
+          Revox
+          Crossraid, 85/B Cross Street,
+          <br>
+          New York, USA
+          <br>
+          NA1 42SL
+        </address>
+      </section>
+      <section class="contact-infos">
+        <h4 class="title custom-font text-black">
+          Horários
+        </h4>
+        <p>
+          Vepertino - Friday 8am to 4pm
+          <br>
+          Noturno - 7am to 6pm
+          <br>
+        </p>
+      </section>
+      <section class="contact-infos">
+        <h4>
+          Telefone
+        </h4>
+        <p>
+          <i class="icon-phone">
+          </i>
+          +088-01234567890
+        </p>
+
+        <p>
+          <i class="icon-phone">
+          </i>
+          +088-01234567890
+        </p>
+
+      </section>
+    </div>
+    <div class="col-lg-7 col-sm-7 address">
+      <h4>
+        Formulário de Contato
+      </h4>
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-info" role="alert">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+      <div class="contact-form">
+        <form role="form" method="POST">
+        {% csrf_token %}
+          {% for field in form %}
+          <div class="form-group">
+            <label for="{{ field.label }}">
+              {{ field.label }}
+            </label>
+            {{ field }}
+          </div>
+          {% endfor %}
+          <button class="btn btn-info" type="submit">
+            Enviar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!--container end-->
+
+<div class="hr">
+  <span class="hr-inner"></span>
+</div>
+
+<script>
+  wow = new WOW(
+  {
+          boxClass:     'wow',      // default
+          animateClass: 'animated', // default
+          offset:       0          // default
+        }
+        )
+  wow.init();
+</script>
+
+
+<script>
+  $(document).ready(function() {
+        //Set the carousel options
+        $('#quote-carousel').carousel({
+          pause: true,
+          interval: 4000,
+        }
+        );
+      }
+      );
+
+</script>
+{% endblock %}

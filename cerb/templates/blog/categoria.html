@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block titulo %}Blog | {{ categoria.titulo }}{% endblock %}
+{% block conteudo %}
+<!--breadcrumbs start-->
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-sm-4">
+        <h1>
+          {{ categoria.titulo }}
+        </h1>
+      </div>
+      <div class="col-lg-8 col-sm-8">
+        <ol class="breadcrumb pull-right">
+          <li>
+            <a href="{% url "portal:index" %}">
+              Inicio
+            </a>
+          </li>
+          <li>
+            <a href="{% url "blog:index" %}">
+              Blog
+            </a>
+          </li>
+          <li class="active">
+            {{ categoria.titulo }}
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!--breadcrumbs end-->
+
+<!--container start-->
+<div class="container">
+  <div class="row">
+
+    {% for noticia in noticias %}
+    <div class="col-md-6">
+      <div class="blog-left wow fadeInLeft">
+        <div class="blog-img">
+          <img height="200" src="{{ noticia.imagem.url }}" alt="{{ noticia.titulo }}"/>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="blog-two-info">
+              <p>
+                <i class="fa fa-user">
+                </i>
+                Por
+                <a href="#">
+                  {{ noticia.autor }}
+                </a>
+
+                |
+                <i class="fa fa-calendar">
+                </i>
+                {{ noticia.data_de_publicacao|date:"D d M Y" }}
+                <br>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="blog-content">
+          <h3>
+            <a href="{% url "blog:noticia" noticia_slug=noticia.slug %}">{{ noticia.titulo }}</a>
+          </h3>
+        </div>
+      </div>
+
+
+    </div>
+    {% endfor %}
+
+
+
+
+
+    <!--blog end-->
+  </div>
+  <div class="text-center">
+    <nav>
+      <ul class="pager">
+        {% if noticias.has_previous %}
+        <li class="previous">
+          <a href="?pagina={{ noticias.previous_page_number }}"><span aria-hidden="true">&larr;</span>Anterior</a></li>
+          {% endif %}
+          
+          <span class="current">
+            Página {{ noticias.number }} de {{ noticias.paginator.num_pages }}.
+          </span>
+
+          {% if noticias.has_next %}
+          <li class="next"><a href="?pagina={{ noticias.next_page_number }}">Próximo <span aria-hidden="true">&rarr;</span></a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+
+    <div class="hr">
+      <span class="hr-inner"></span>
+    </div>
+
+  </div>
+  <!--container end-->
+  <script>
+    wow = new WOW(
+    {
+          boxClass:     'wow',      // default
+          animateClass: 'animated', // default
+          offset:       0          // default
+        }
+        )
+    wow.init();
+  </script>
+  {% endblock %}

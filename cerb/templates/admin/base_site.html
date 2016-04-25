@@ -1,0 +1,36 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ title }} | CERB {% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">CERB</a></h1>
+{% endblock %}
+
+{% block extrastyle %}
+<style type="text/css">
+	
+	body {
+		font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+	}
+
+	#header {
+		background: #e69000;
+		color: #fff;
+	}
+	#branding h1, #branding h1 a:link, #branding h1 a:visited {
+		color: #fff;
+	}
+	.module h2, .module caption, .inline-group h2 {
+		background: #e69960;
+	}
+	div.breadcrumbs {
+		background: #e69960;
+	}
+	.selector-chosen h2 {
+		background: #e69960;
+	}
+	.module h2, .module caption, .inline-group h2 {
+		background: #e69960;
+	}
+</style>
+{% endblock %}

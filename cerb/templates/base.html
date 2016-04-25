@@ -1,0 +1,208 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CERB - Centro de Ensino Professor Rafael Braga de Oliveira">
+  <meta name="author" content="Marx Souza">
+  <meta name="keywords" content="escola, pio xii, cerb, maranhão, marx souza">
+  <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+
+  <title>
+    CERB - Centro de Ensino Professor Rafael Braga de Oliveira | {% block titulo %}{% endblock %}
+  </title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">  
+  <link href="{% static "css/theme.css" %}" rel="stylesheet">
+  <link href="{% static "css/bootstrap-reset.css" %}" rel="stylesheet">
+
+  <!--external css-->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">  
+  <link rel="stylesheet" href="{% static "css/flexslider.css" %}"/>
+  <link href="{% static "assets/bxslider/jquery.bxslider.css" %}" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static "css/animate.css" %}">
+  <link rel="stylesheet" href="{% static "assets/owlcarousel/owl.carousel.css" %}">
+  <link rel="stylesheet" href="{% static "assets/owlcarousel/owl.theme.css" %}">
+  <link href="{% static "css/superfish.css" %}" rel="stylesheet" media="screen">
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> -->
+
+
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" type="text/css" href="{% static "css/component.css" %}">
+  <link href="{% static "css/style.css" %}" rel="stylesheet">
+  <link href="{% static "css/magnific-popup.css" %}" rel="stylesheet">
+  <link href="{% static "css/style-responsive.css" %}" rel="stylesheet" />
+
+  <link rel="stylesheet" type="text/css" href="{% static "css/parallax-slider/parallax-slider.css" %}" />
+  <script type="text/javascript" src="{% static "js/parallax-slider/modernizr.custom.28468.js" %}">
+  </script>
+
+  <script src="{% static "js/html5shiv.js" %}">
+  </script>
+  <script src="{% static "js/respond.min.js" %}">
+  </script>
+      <!-- js placed at the end of the document so the pages load faster
+<script src="{% static "js/jquery.js" %}">
+</script>
+-->
+<script src="{% static "js/jquery-1.8.3.min.js" %}">
+</script>
+<script src="{% static "js/bootstrap.js" %}"></script>
+</script>
+<script type="text/javascript" src="{% static "js/hover-dropdown.js" %}">
+</script>
+<script defer src="{% static "js/jquery.flexslider.js" %}">
+</script>
+<script type="text/javascript" src="{% static "assets/bxslider/jquery.bxslider.js" %}">
+</script>
+
+<script type="text/javascript" src="{% static "js/jquery.parallax-1.1.3.js" %}">
+</script>
+<script src="{% static "js/wow.min.js" %}">
+</script>
+<script src="{% static "assets/owlcarousel/owl.carousel.js" %}">
+</script>
+
+<script src="{% static "js/jquery.easing.min.js" %}">
+</script>
+<script src="{% static "js/link-hover.js" %}">
+</script>
+<script src="{% static "js/superfish.js" %}">
+</script>
+
+<!--common script for all pages-->
+<script src="{% static "js/common-scripts.js" %}"></script>
+<script src="{% static "js/mixitup.js" %}"></script>
+
+<script src="{% static "js/jquery.magnific-popup.js" %}"></script>
+
+</head>
+
+<body>
+  <!--header start-->
+  <header class="head-section">
+    <div class="navbar navbar-default navbar-static-top container">
+      <div class="navbar-header">
+        <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{% url "portal:index" %}"><span>C</span>ER<span>B</span> <img id="logo-cerb" src="{% static "img/logo-cerb.png" %}"></a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="{% url "blog:index" %}"><i class="fa fa-newspaper-o"></i> Blog</a>
+          </li>
+          <li>
+            <a href="{% url "portal:projetos" %}"><i class="fa fa-globe"></i> Projetos</a>
+          </li>
+          <li>
+            <a href="{% url "portal:sobre" %}"><i class="fa fa-file"></i> Sobre</a>
+          </li>
+          <li>
+            <a href="{% url "portal:contato" %}"><i class="fa fa-edit"></i> Contato</a>
+          </li>
+          <li>
+            <a href="{% url "admin:index" %}">Login</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </header>
+  <!--header end-->
+
+  <!--container start-->
+  {% block conteudo %}
+  {% endblock %}
+  <!--container end-->
+
+  <!--footer start-->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-sm-4 address wow fadeInUp" style="float: left;" data-wow-duration="2s" data-wow-delay=".1s">
+          <h1>
+            Informações para contato
+          </h1>
+          <address>
+            <p><i class="fa fa-home pr-10"></i>Endereço: Nº.XXXXXX Rua</p>
+            <p><i class="fa fa-mobile pr-10"></i>Celular : (123) 456-7890 </p>
+            <p><i class="fa fa-phone pr-10"></i>Telefone : (123) 456-7890 </p>
+            <p><i class="fa fa-envelope pr-10"></i>Email :   <a href="javascript:;">support@example.com</a></p>
+          </address>
+        </div>
+        <div class="col-lg-4 col-sm-4">
+
+                    <div class="text-footer wow fadeInUp" data-wow-duration="2s" data-wow-delay=".7s">
+                    <h1>Text Widget</h1>
+                        <p>
+                            This is a text widget.Lorem ipsum dolor sit amet.
+                            This is a text widget.Lorem ipsum dolor sit amet
+                        </p>
+                    </div>
+               </div>
+        
+        <div class="col-lg-4 col-sm-4" style="float: right;">
+          <div class="page-footer wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
+            <h1>
+              CERB nas Redes Sociais
+            </h1>
+            <ul class="page-footer-list">
+              <li>
+                <i class="fa fa-facebook"></i>
+                <a href="">Facebook</a>
+              </li>
+              <li>
+                <i class="fa fa-twitter"></i>
+                <a href="">Twitter</a>
+              </li>
+              <li>
+                <i class="fa fa-google-plus"></i>
+                <a href="">Google +</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- footer end -->
+<!--small footer start -->
+<footer class="footer-small">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-sm-6 pull-right">
+        <ul class="social-link-footer list-unstyled">
+          <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".1s"><a href="http://www.facebook.com/MarxSouza12" target="blank"><i class="fa fa-facebook"></i></a></li>
+          <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".2s"><a href="http://plus.google.com/+MarxSouza12" target="blank"><i class="fa fa-google-plus"></i></a></li>
+          <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".4s"><a href="#" target="blank"><i class="fa fa-linkedin"></i></a></li>
+          <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".5s"><a href="http://www.twitter.com/MarxSouza10" target="blank"><i class="fa fa-twitter"></i></a></li>
+          <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".7s"><a href="http://www.github.com/MarxSouza" target="blank"><i class="fa fa-github"></i></a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <div class="copyright">
+          <p>&copy; Todos os direitos reservados - Marx Souza</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!--small footer end-->
+<script>
+$(document).ready(function(){
+  src = $('img').attr('src'); 
+  if(src == ''){ 
+    $('img').attr('src') == 'http://placehold.it/350x150?text=Sem+imagem'
+  } 
+});
+</script>
+</body>
+</html>

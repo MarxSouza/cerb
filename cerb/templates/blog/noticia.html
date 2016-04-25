@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block titulo %} {{ noticia.titulo }} {% endblock %}
+{% block conteudo %}
+<!--breadcrumbs start-->
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-sm-4">
+        <h1>
+          {{ noticia.categoria }}
+        </h1>
+      </div>
+      <div class="col-lg-8 col-sm-8">
+        <ol class="breadcrumb pull-right">
+          <li>
+            <a href="{% url "portal:index" %}">
+              Inicio
+            </a>
+          </li>
+          <li>
+            <a href="{% url "blog:index" %}">
+              Blog
+            </a>
+          </li>
+          <li>
+            <a href="{% url "blog:categoria" categoria_slug=noticia.categoria.slug %}">
+              {{ noticia.categoria }}
+            </a>
+          </li>
+          <li class="active">
+            {{ noticia.titulo|truncatewords:"5" }}
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!--breadcrumbs end-->
+
+<!--container start-->
+<div class="container">
+  <div class="row">
+    <!--blog start-->
+    <div class="col-md-12">
+      <div class="blog-item">
+        <div class="row">
+          <div class="col-lg-2 col-sm-2">
+            <div class="date-wrap">
+              <span class="date">
+                {{ noticia.data_de_publicacao|date:"d" }}
+              </span>
+              <span class="month">
+                {{ noticia.data_de_publicacao|date:"M" }}
+              </span>
+            </div>
+
+          </div>
+          <div class="col-lg-10 col-sm-10">
+
+
+            <div class="blog-img gs">
+              <img height="400" src="{{ noticia.imagem.url }}" alt=""/>
+            </div>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-2 col-sm-2 text-right">
+            <div class="author">
+              By
+              <a href="#">
+                {{ noticia.autor }}
+              </a>
+            </div>
+            <ul class="list-unstyled">
+              <li>
+                <a href="javascript:;">
+                  <em>
+                    travel
+                  </em>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:;">
+                  <em>
+                    tour
+                  </em>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:;">
+                  <em>
+                    recreation
+                  </em>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:;">
+                  <em>
+                    tourism
+                  </em>
+                </a>
+              </li>
+            </ul>
+            <div class="st-view">
+              <ul class="list-unstyled">
+                <li>
+                  <a href="javascript:;">
+                    209 View
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;">
+                    23 Share
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;">
+                    23 comments
+                  </a>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-10 col-sm-10">
+            <h1>
+             {{ noticia.titulo }}
+           </h1>
+           <p>
+             {{ noticia.texto }}
+           </p>
+           <div id="fb-root"></div>
+           <script>
+             window.fbAsyncInit = function() {
+              FB.init({
+    appId      : 'YOUR_APP_ID', // App ID
+    channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel File
+    status     : true, // check login status
+    cookie     : true, // enable cookies to allow the server to access the session
+    xfbml      : true  // parse XFBML
+  });
+            };
+
+            (function(d){
+              var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+              if (d.getElementById(id)) {return;}
+              js = d.createElement('script'); js.id = id; js.async = true;
+              js.src = "//connect.facebook.net/en_US/all.js";
+              ref.parentNode.insertBefore(js, ref);
+            }(document));
+          </script>
+
+          ...
+
+          <div
+          class="fb-comments" 
+          data-href="{{ noticia.slug }}" 
+          data-num-posts="2" 
+          data-width="470"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</div>
+<!--container end-->
+
+<script>
+  wow = new WOW(
+  {
+          boxClass:     'wow',      // default
+          animateClass: 'animated', // default
+          offset:       0          // default
+        }
+        )
+  wow.init();
+</script>
+{% endblock %}

@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block titulo %}Blog{% endblock %}
+{% block conteudo %}
+<!--breadcrumbs start-->
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-sm-4">
+        <h1>
+          <a class="dropdown-toggle navegador-dropdown" data-close-others="false" data-delay="0" data-toggle="dropdown" data-toggle="dropdown" href="#"><i class="fa fa-navicon"></i> </a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-header">Categorias</li>
+            <li role="separator" class="divider"></li>
+            {% for categoria in categorias %}
+            <li>
+              <a href="{% url "blog:categoria" categoria_slug=categoria.slug %}">{{ categoria.titulo }}</a>
+            </li>
+            {% endfor %}         
+          </ul> Blog      
+        </h1>
+      </div>
+      <div class="col-lg-8 col-sm-8">
+        <ol class="breadcrumb pull-right">
+          <li>
+            <a href="{% url "portal:index" %}">
+              Inicio
+            </a>
+          </li>
+          <li class="active">
+            Blog
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!--breadcrumbs end-->
+
+<!--container start-->
+<div class="container">
+  <div class="row">
+    <!--blog start-->
+    <div class="col-md-9 ">
+      {% for noticia in noticias %}
+      <div class="blog-item">
+        <div class="row">
+          <div class="col-lg-2 col-sm-2">
+            <div class="date-wrap">
+              <span class="date">
+                {{ noticia.data_de_publicacao|date:"d" }}
+              </span>
+              <span class="month">
+                {{ noticia.data_de_publicacao|date:"M" }}
+              </span>
+            </div>
+
+          </div>
+          <div class="col-lg-10 col-sm-10">
+            <div class="blog-img ">
+              <img height="320" src="{{ noticia.imagem.url }}" alt=""/>
+            </div>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-2 col-sm-2 text-right">
+            <ul class="list-unstyled">
+              <li>
+                <a href="{% url "blog:categoria" categoria_slug=noticia.categoria.slug %}">
+                 {{ noticia.categoria }}
+               </a>
+             </li>
+           </ul>
+           <div class="author">
+            Por
+            <a href="#">
+              {{ noticia.autor }}
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-10 col-sm-10">
+          <h1>
+            <a href="{% url "blog:noticia" noticia_slug=noticia.slug %}">
+              {{ noticia.titulo }}
+            </a>
+          </h1>
+          <p>
+            {{ noticia.texto|truncatewords:"50" }}
+          </p>
+          <a href="{% url "blog:noticia" noticia_slug=noticia.slug %}" class="btn btn-primary">
+            Continue lendo
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+    <div class="text-center">
+      <nav>
+        <ul class="pager">
+          {% if noticias.has_previous %}
+          <li class="previous">
+            <a href="?pagina={{ noticias.previous_page_number }}"><span aria-hidden="true">&larr;</span>Anterior</a></li>
+            {% endif %}
+            
+            <span class="current">
+              Página {{ noticias.number }} de {{ noticias.paginator.num_pages }}.
+            </span>
+
+            {% if noticias.has_next %}
+            <li class="next"><a href="?pagina={{ noticias.next_page_number }}">Próximo <span aria-hidden="true">&rarr;</span></a></li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+      <div class="hr">
+        <span class="hr-inner"></span>
+      </div>
+
+    </div>
+
+    <div class="col-md-3">
+      <div class="blog-side-item">
+        <div class="search-row">
+          <input type="text" class="form-control" placeholder="Search here">
+        </div>
+        <div class="blog-post">
+          <h3>
+            Noticias mais visualizadas
+          </h3>
+          {% for noticia in noticias %}
+          {% if forloop.counter = 8 %}
+          <script>
+          $(document).ready(function(){
+            $('#noticia_{{ forloop.counter }}').hide()
+          });
+          </script>
+          {% endif %}
+          <div class="media" id="noticia_{{ forloop.counter }}">
+            <a class="pull-left" href="javascript:;">
+              <img class="" height="50" width="70" src="{{ noticia.imagem.url }}" alt="">
+            </a>
+            <div class="media-body">
+              <h5 class="media-heading">
+                <a href="javascript:;">
+                  {{ noticia.data_de_publicacao|date:"d F Y" }}
+                </a>
+              </h5>
+              <p>
+                {{ noticia.texto|truncatewords:"12" }}
+              </p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+
+      <!--blog end-->
+    </div>
+  </div>
+</div>
+<!--container end-->
+
+<script>
+  wow = new WOW(
+  {
+          boxClass:     'wow',      // default
+          animateClass: 'animated', // default
+          offset:       0          // default
+        }
+        )
+  wow.init();
+</script>
+{% endblock %}

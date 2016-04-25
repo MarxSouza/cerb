@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block titulo %}Projetos{% endblock %}
+{% block conteudo %}
+<!--breadcrumbs start-->
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-sm-4">
+        <h1>Projetos</h1>
+      </div>
+      <div class="col-lg-8 col-sm-8">
+        <ol class="breadcrumb pull-right">
+          <li><a href="#">Inicio</a></li>
+          <li class="active">Projetos</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!--breadcrumbs end-->
+
+
+<div class="container">
+  <!--recent work start-->
+  <div class="bg-lg">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 recent">
+          <h3 class="recent-work">
+            Projetos recentes
+          </h3>
+          <div id="owl-demo" class="owl-carousel owl-theme wow fadeIn">
+            
+            {% for projeto in projetos %}
+            <div class="item view view-tenth">
+              <img src="{{ projeto.imagem.url }}" alt="work Image">
+              <div class="mask">
+                <a href="{% url "portal:projeto" %}" class="info" data-toggle="tooltip" data-placement="top" title="Details">
+                  <i class="fa fa-link">
+                  </i>
+                </a>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--recent work end-->
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <ul id="filters" class="clearfix">
+      	
+        <li><span class="filter active" data-filter="{% for p in projetos.tema %}{{ p }} {% endfor %}">Todos</span></li>
+        {% for projeto_tema in projetos.tema %}
+        <li><span class="filter" data-filter="{{ projeto_tema }}">{{ projeto_tema|upper }}</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row mar-b-30">
+    <div id="portfoliolist-three">
+      <div class="col-md-12">
+        {% for projeto in projetos %}
+        <div class="portfolio {{ projeto.tema }}" data-cat="{{ projeto.tema }}">
+          <div class="portfolio-wrapper">
+            <div class="portfolio-hover">
+              <div class="image-caption">
+                <a href="{{ projeto.imagem.url }}" class="magnefig label label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom"><i class="fa fa-eye"></i></a>
+                <a href="{% url "projeto:portal" slug=projeto.slug %}" class="label label-info icon" data-toggle="tooltip" data-placement="top" title="Detalhes"><i class="fa fa-link"></i></a>
+              </div>
+              <img src="{% static "img/portfolios/logo/5.jpg" %}" alt="" />
+
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<script type="text/javascript">
+  $('.image-caption a').tooltip();
+
+  $(function () {
+
+    var filterList = {
+
+      init: function () {
+
+                // MixItUp plugin
+                // http://mixitup.io
+                $('#portfoliolist-three').mixitup({
+                  targetSelector: '.portfolio',
+                  filterSelector: '.filter',
+                  effects: ['fade'],
+                  easing: 'snap',
+                    // call the hover effect
+                    onMixEnd: filterList.hoverEffect()
+                  });
+
+              },
+
+              hoverEffect: function () {
+                $("[rel='tooltip']").tooltip();
+                // Simple parallax effect
+                $('#portfoliolist-three .portfolio .portfolio-hover').hover(
+                  function(){
+                    $(this).find('.image-caption').slideDown(250); //.fadeIn(250)
+                  },
+                  function(){
+                    $(this).find('.image-caption').slideUp(250); //.fadeOut(205)
+                  }
+                  );
+              }
+
+            };
+
+        // Run the show!
+        filterList.init();
+
+
+      });
+
+  $( document ).ready(function() {
+   $('.magnefig').each(function(){
+    $(this).magnificPopup({
+      type:'image',
+      removalDelay: 300,
+      mainClass: 'mfp-fade'
+    })
+  });
+ });
+</script>
+
+<script>
+
+
+
+  $(document).ready(function() {
+
+    $("#owl-demo").owlCarousel({
+
+            autoPlay: 3000, //Set AutoPlay to 3 seconds
+
+            items : 4,
+            itemsDesktop : [1199,3],
+            itemsDesktopSmall : [979,3],
+            stopOnHover : true,
+
+          });
+
+  });
+
+  new WOW().init();
+
+
+</script>
+
+{% endblock %}
