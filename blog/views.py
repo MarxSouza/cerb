@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import F
 from .models import Noticia, Categoria
 
 def index(request):
@@ -34,12 +35,14 @@ def categoria(request, categoria_slug):
         noticias = paginador.page(paginador.num_pages)
     categorias = Categoria.objects.all().order_by('titulo')
     context = {
+        'categoria': categoria,
         'noticias': noticias, 
         'categorias': categorias
     }
     return render(request, 'blog/categoria.html', context)
 
 def noticia(request, noticia_slug):
+    Noticia.objects.filter(slug=noticia_slug).update(visualizacoes=F('visualizacoes') + 1)
     noticia = Noticia.objects.get(slug=noticia_slug)
     context = {
         'noticia': noticia

@@ -18,7 +18,7 @@ class Noticia(models.Model):
 	categoria = models.ForeignKey('blog.Categoria', default=1)
 	imagem = models.ImageField(upload_to='noticias', blank=True)
 	texto = models.TextField()
-	visualizacoes = models.PositiveIntegerField()
+	visualizacoes = models.PositiveIntegerField(default=0)
 	data_de_publicacao = models.DateTimeField(verbose_name="Data de Publicação", default=timezone.now())
 	slug = models.SlugField()
 	

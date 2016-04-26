@@ -5,5 +5,4 @@ handler404 = 'portal.views.erro404'
 
 urlpatterns = [
 	url(r'^$', views.index, name='index'),
-	url(r'^sobre/', views.sobre, name='sobre'),
 ]
