@@ -122,9 +122,6 @@
 
     <div class="col-md-3">
       <div class="blog-side-item">
-        <div class="search-row">
-          <input type="text" class="form-control" placeholder="Search here">
-        </div>
         <div class="blog-post">
           <h3>
             Noticias mais visualizadas
@@ -139,16 +136,17 @@
           {% endif %}
           <div class="media" id="noticia_{{ forloop.counter }}">
             <a class="pull-left" href="javascript:;">
-              <img class="" height="50" width="70" src="{{ noticia.imagem.url }}" alt="">
+              <img class="" height="50" width="70" src="{{ noticia_mv.imagem.url }}" alt="">
             </a>
             <div class="media-body">
               <h5 class="media-heading">
-                <a href="javascript:;">
-                  {{ noticia.data_de_publicacao|date:"d F Y" }}
+                <a href="{% url "blog:noticia" noticia_slug=noticia_mv.slug %}">
+                {{ noticia_mv.titulo }}
                 </a>
               </h5>
+              <p>{{ noticia_mv.data_de_publicacao|date:"d F Y" }}</p>
               <p>
-                {{ noticia.texto|truncatewords:"12" }}
+                {{ noticia_mv.texto|truncatewords:"12" }}
               </p>
             </div>
           </div>
@@ -162,15 +160,4 @@
   </div>
 </div>
 <!--container end-->
-
-<script>
-  wow = new WOW(
-  {
-          boxClass:     'wow',      // default
-          animateClass: 'animated', // default
-          offset:       0          // default
-        }
-        )
-  wow.init();
-</script>
 {% endblock %}

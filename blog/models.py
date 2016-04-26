@@ -3,13 +3,11 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 categorias = (
-	('Automobilismo','AUTO'),
-	('Esporte','ESPO'),
-	('Moda','MODA'),
-	('',''),
-	('',''),
-	('',''),
-	('',''),
+	('Automobilismo','Automobilismo'),
+	('Educação','Educação'),
+	('Esporte','Esporte'),
+	('Moda','Moda'),
+	('Política','Política'),
 )
 
 class Noticia(models.Model): 
