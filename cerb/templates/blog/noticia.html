@@ -73,97 +73,26 @@
                 {{ noticia.autor }}
               </a>
             </div>
-            <ul class="list-unstyled">
-              <li>
-                <a href="javascript:;">
-                  <em>
-                    travel
-                  </em>
-                </a>
-              </li>
-              <li>
-                <a href="javascript:;">
-                  <em>
-                    tour
-                  </em>
-                </a>
-              </li>
-              <li>
-                <a href="javascript:;">
-                  <em>
-                    recreation
-                  </em>
-                </a>
-              </li>
-              <li>
-                <a href="javascript:;">
-                  <em>
-                    tourism
-                  </em>
-                </a>
-              </li>
-            </ul>
             <div class="st-view">
               <ul class="list-unstyled">
                 <li>
-                  <a href="javascript:;">
-                    209 View
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:;">
-                    23 Share
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:;">
-                    23 comments
-                  </a>
-                </li>
+                 {# Visualizações {{ noticia.visualizacoes }} #}
+               </li>
+             </ul>
+           </div>
+         </div>
+         <div class="col-lg-10 col-sm-10">
+          <h1>
+           {{ noticia.titulo }}
+         </h1>
+         <p>
+           {{ noticia.texto }}
+         </p>
+       </div>
+     </div>
 
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-10 col-sm-10">
-            <h1>
-             {{ noticia.titulo }}
-           </h1>
-           <p>
-             {{ noticia.texto }}
-           </p>
-           <div id="fb-root"></div>
-           <script>
-             window.fbAsyncInit = function() {
-              FB.init({
-    appId      : 'YOUR_APP_ID', // App ID
-    channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel File
-    status     : true, // check login status
-    cookie     : true, // enable cookies to allow the server to access the session
-    xfbml      : true  // parse XFBML
-  });
-            };
-
-            (function(d){
-              var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-              if (d.getElementById(id)) {return;}
-              js = d.createElement('script'); js.id = id; js.async = true;
-              js.src = "//connect.facebook.net/en_US/all.js";
-              ref.parentNode.insertBefore(js, ref);
-            }(document));
-          </script>
-
-          ...
-
-          <div
-          class="fb-comments" 
-          data-href="{{ noticia.slug }}" 
-          data-num-posts="2" 
-          data-width="470"></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
+   </div>
+ </div>
 </div>
 
 </div>

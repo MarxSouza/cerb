@@ -23,9 +23,9 @@ PROJECT_DIR = os.path.dirname(__file__)
 SECRET_KEY = '_@ah0u86b+6cgvr4v4blx1erx@9a(rbohib6zsw*8n*#so&hs!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['marxsouza.pythonanywhere.com']
+ALLOWED_HOSTS = ['']
 
 
 # Application definition
@@ -124,11 +124,3 @@ STATIC_URL = 'https://c3117d24cfc9413e04553ba683364b4fe667446b.googledrive.com/h
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
-
-
-EMAIL_USE_TLS = True
-EMAIL_HOST = ''
-EMAIL_PORT = 000
-EMAIL_HOST_USER = 'exemplo@exemplo.com'
-EMAIL_HOST_PASSWORD = ''
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

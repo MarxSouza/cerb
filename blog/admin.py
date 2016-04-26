@@ -1,24 +1,19 @@
 from django.contrib import admin
 from . import models
-
-class ColunistaAdmin(admin.ModelAdmin):
-	pass
-
+		
 class CategoriaAdmin(admin.ModelAdmin):
 	prepopulated_fields = {'slug': ('titulo',)}
 
 class NoticiaAdmin(admin.ModelAdmin):
-	exclude = ['autor']
 	prepopulated_fields = {'slug': ('titulo',)}
-	list_display = ['titulo', 'categoria', 'data_de_publicacao']
+	exclude = ['autor']
+	list_display = ['titulo', 'categoria', 'data_de_publicacao', 'autor']
 	list_filter = ['data_de_publicacao']
 	search_fields = ["titulo", "texto"]
 
 	def save_model(self, request, obj, form, change):
-		obj.author = request.user
-		obj.save()	
-
-
-admin.site.register(models.Colunista, ColunistaAdmin)
+		obj.autor = request.user
+		obj.save()
+	
 admin.site.register(models.Categoria, CategoriaAdmin)
 admin.site.register(models.Noticia, NoticiaAdmin)

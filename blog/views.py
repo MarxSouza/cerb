@@ -4,6 +4,7 @@ from .models import Noticia, Categoria
 
 def index(request):
     lista_noticias = Noticia.objects.all().order_by('-data_de_publicacao')
+    noticias_mv = Noticia.objects.all().order_by('visualizacoes')[:8]
     paginador = Paginator(lista_noticias, 8)
     pagina = request.GET.get('pagina')
     try:
@@ -14,7 +15,8 @@ def index(request):
         noticias = paginador.page(paginador.num_pages)
     categorias = Categoria.objects.all().order_by('titulo')
     context = {
-        'noticias': noticias, 
+        'noticias': noticias,
+        'noticias_mv': noticias_mv,
         'categorias': categorias
     }
     return render(request, 'blog/index.html', context)

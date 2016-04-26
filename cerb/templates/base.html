@@ -80,19 +80,19 @@
 
 <style type="text/css">
   body {
-  padding-top: 70px;
-  padding-bottom: 30px;
-}
+    padding-top: 70px;
+    padding-bottom: 30px;
+  }
 
-.theme-dropdown .dropdown-menu {
-  display: block;
-  position: static;
-  margin-bottom: 20px;
-}
+  .theme-dropdown .dropdown-menu {
+    display: block;
+    position: static;
+    margin-bottom: 20px;
+  }
 
-.theme-showcase > p > .btn {
-  margin: 5px 0;
-}
+  .theme-showcase > p > .btn {
+    margin: 5px 0;
+  }
 </style>
 </head>
 
@@ -114,13 +114,7 @@
             <a href="{% url "blog:index" %}"><i class="fa fa-newspaper-o"></i> Blog</a>
           </li>
           <li>
-            <a href="{% url "portal:projetos" %}"><i class="fa fa-globe"></i> Projetos</a>
-          </li>
-          <li>
             <a href="{% url "portal:sobre" %}"><i class="fa fa-file"></i> Sobre</a>
-          </li>
-          <li>
-            <a href="{% url "portal:contato" %}"><i class="fa fa-edit"></i> Contato</a>
           </li>
           <li>
             <a href="{% url "admin:index" %}">Login</a>
@@ -154,14 +148,11 @@
         </div>
         <div class="col-lg-4 col-sm-4">
 
-                    <div class="text-footer wow fadeInUp" data-wow-duration="2s" data-wow-delay=".7s">
-                    <h1>Text Widget</h1>
-                        <p>
-                            This is a text widget.Lorem ipsum dolor sit amet.
-                            This is a text widget.Lorem ipsum dolor sit amet
-                        </p>
-                    </div>
-               </div>
+          <div class="text-footer wow fadeInUp" data-wow-duration="2s" data-wow-delay=".7s">
+          <h1 style="text-align: center;">Rodapé</h1>
+            <hr>
+          </div>
+        </div>
         
         <div class="col-lg-4 col-sm-4" style="float: right;">
           <div class="page-footer wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
@@ -212,12 +203,12 @@
 </footer>
 <!--small footer end-->
 <script>
-$(document).ready(function(){
-  src = $('img').attr('src'); 
-  if(src == ''){ 
-    $('img').attr('src') == 'http://placehold.it/350x150?text=Sem+imagem'
-  } 
-});
+  $(document).ready(function(){
+    src = $('img').attr('src'); 
+    if(src == ''){ 
+      $('img').attr('src') == 'http://placehold.it/350x150?text=Sem+imagem'
+    } 
+  });
 </script>
 </body>
 </html>
