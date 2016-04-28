@@ -136,6 +136,6 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-if DEBUG == False:
+if DEBUG == True:
     SECRET_KEY = os.environ.get('SECRET_KEY')
     ALLOWED_HOSTS = []
