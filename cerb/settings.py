@@ -23,7 +23,7 @@ PROJECT_DIR = os.path.dirname(__file__)
 SECRET_KEY = '_@ah0u86b+6cgvr4v4blx1erx@9a(rbohib6zsw*8n*#so&hs!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['']
 
@@ -123,9 +123,11 @@ USE_TZ = True
 
 if DEBUG == True:
     STATIC_URL = '/static/'
-    STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 else:
     STATIC_URL = 'https://c3117d24cfc9413e04553ba683364b4fe667446b.googledrive.com/host/0B3K2fHW-nOH2QVpOVWo2NjVOaUU/'
+
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
