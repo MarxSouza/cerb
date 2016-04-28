@@ -5,7 +5,7 @@ from .models import Noticia, Categoria
 
 def index(request):
     lista_noticias = Noticia.objects.all().order_by('-data_de_publicacao')
-    noticias_mv = Noticia.objects.all().order_by('visualizacoes')[:8]
+    noticias_mv = Noticia.objects.all().order_by('views')[:8]
     paginador = Paginator(lista_noticias, 8)
     pagina = request.GET.get('pagina')
     try:
@@ -42,7 +42,7 @@ def categoria(request, categoria_slug):
     return render(request, 'blog/categoria.html', context)
 
 def noticia(request, noticia_slug):
-    Noticia.objects.filter(slug=noticia_slug).update(visualizacoes=F('visualizacoes') + 1)
+    Noticia.objects.filter(slug=noticia_slug).update(views=F('views') + 1)
     noticia = Noticia.objects.get(slug=noticia_slug)
     context = {
         'noticia': noticia

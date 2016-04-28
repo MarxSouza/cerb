@@ -23,7 +23,7 @@
       <div class="col-lg-8 col-sm-8">
         <ol class="breadcrumb pull-right">
           <li>
-            <a href="{% url "portal:index" %}">
+            <a href="{% url "home" %}">
               Inicio
             </a>
           </li>
@@ -42,6 +42,9 @@
   <div class="row">
     <!--blog start-->
     <div class="col-md-9 ">
+    <div class="page-header">
+      <h1>Últimas noticias</h1>
+    </div>
       {% for noticia in noticias %}
       <div class="blog-item">
         <div class="row">
@@ -58,7 +61,11 @@
           </div>
           <div class="col-lg-10 col-sm-10">
             <div class="blog-img ">
-              <img height="320" src="{{ noticia.imagem.url }}" alt=""/>
+              {% if noticia.imagem %}
+              <img height="320" src="{{ noticia.imagem.url }}" alt="{{ noticia.titulo }}"/>
+              {% else %}
+              <img height="320" src="http://placehold.it/1200x600?text=Sem+imagem" alt="{{ noticia.titulo }}"/>
+              {% endif %}
             </div>
 
           </div>
@@ -136,7 +143,12 @@
           {% endif %}
           <div class="media" id="noticia_{{ forloop.counter }}">
             <a class="pull-left" href="javascript:;">
-              <img class="" height="50" width="70" src="{{ noticia_mv.imagem.url }}" alt="">
+              {% if noticia_mv.imagem %}
+              <img class="" height="50" width="70" src="{{ noticia_mv.imagem.url }}" alt="{{ noticia.titulo }}">
+              {% else %}
+              <img height="50" width="70" src="http://placehold.it/1200x600?text=Sem+imagem" alt="{{ noticia.titulo }}"/>
+              {% endif %}
+
             </a>
             <div class="media-body">
               <h5 class="media-heading">

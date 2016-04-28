@@ -23,9 +23,9 @@ PROJECT_DIR = os.path.dirname(__file__)
 SECRET_KEY = '_@ah0u86b+6cgvr4v4blx1erx@9a(rbohib6zsw*8n*#so&hs!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['cerb.pythonanywhere.com']
+ALLOWED_HOSTS = ['']
 
 
 # Application definition
@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'portal',
     'blog',
+
+    'ckeditor',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -120,7 +121,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-STATIC_URL = 'https://c3117d24cfc9413e04553ba683364b4fe667446b.googledrive.com/host/0B3K2fHW-nOH2QVpOVWo2NjVOaUU/'
+if DEBUG == True:
+    STATIC_URL = '/static/'
+    STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+else:
+    STATIC_URL = 'https://c3117d24cfc9413e04553ba683364b4fe667446b.googledrive.com/host/0B3K2fHW-nOH2QVpOVWo2NjVOaUU/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
+
+
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'skin': 'moono',
+    }
+}

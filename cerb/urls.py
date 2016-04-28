@@ -1,6 +1,7 @@
 from django.conf.urls import url, include
 from django.views.static import serve
 from django.contrib import admin
+from core import views
 from . import settings
 
 urlpatterns = [
@@ -8,7 +9,10 @@ urlpatterns = [
         'document_root': settings.MEDIA_ROOT,
     }),
 
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+
     url(r'^admin/', admin.site.urls),
-    url(r'', include('portal.urls', namespace='portal')),
+    
+    url(r'^$', views.home, name='home'),
     url(r'^blog/', include('blog.urls', namespace='blog')),
 ]
