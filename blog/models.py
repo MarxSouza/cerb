@@ -12,6 +12,8 @@ categorias = (
 	('Saúde','Saúde'),
 	('Fatos Corriqueiros','Fatos Corriqueiros'),
 	('Música', 'Música'),
+	('Religião','Religião'),
+	('Cultura','Cultura'),
 )
 
 class Categoria(models.Model): 
@@ -33,5 +35,5 @@ class Noticia(models.Model):
 	slug = models.SlugField()
 	
 	def __str__(self):
-		return "%s - %s:%s" % (self.titulo, self.autor, self.categoria)
-
+		return "%s / %s" % (self.titulo, self.categoria)
+		

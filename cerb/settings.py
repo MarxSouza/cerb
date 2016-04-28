@@ -23,9 +23,9 @@ PROJECT_DIR = os.path.dirname(__file__)
 SECRET_KEY = '_@ah0u86b+6cgvr4v4blx1erx@9a(rbohib6zsw*8n*#so&hs!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['cerb.pythonanywhere.com', 'localhost']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -121,12 +121,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-if DEBUG == True:
-    STATIC_URL = '/static/'
-else:
-    STATIC_URL = 'https://c3117d24cfc9413e04553ba683364b4fe667446b.googledrive.com/host/0B3K2fHW-nOH2QVpOVWo2NjVOaUU/'
-
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+STATIC_URL = 'https://c3117d24cfc9413e04553ba683364b4fe667446b.googledrive.com/host/0B3K2fHW-nOH2QVpOVWo2NjVOaUU/'
 
 
 MEDIA_URL = '/media/'

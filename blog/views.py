@@ -44,8 +44,5 @@ def categoria(request, categoria_slug):
 def noticia(request, noticia_slug):
     Noticia.objects.filter(slug=noticia_slug).update(views=F('views') + 1)
     noticia = Noticia.objects.get(slug=noticia_slug)
-    context = {
-        'noticia': noticia
-    }
-    return render(request, 'blog/noticia.html', context)
+    return render(request, 'blog/noticia.html', {'noticia':noticia})
 

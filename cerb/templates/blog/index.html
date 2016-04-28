@@ -87,17 +87,11 @@
           </div>
         </div>
         <div class="col-lg-10 col-sm-10">
-          <h1>
+          <h1 align="center">
             <a href="{% url "blog:noticia" noticia_slug=noticia.slug %}">
               {{ noticia.titulo }}
             </a>
           </h1>
-          <p style="text-align: justify;">
-            {{ noticia.texto|truncatewords:"50" }}
-          </p>
-          <a href="{% url "blog:noticia" noticia_slug=noticia.slug %}" class="btn btn-primary">
-            Continue lendo
-          </a>
         </div>
       </div>
     </div>
@@ -157,9 +151,6 @@
                 </a>
               </h5>
               <p>{{ noticia_mv.data_de_publicacao|date:"d F Y" }}</p>
-              <p>
-                {{ noticia_mv.texto|truncatewords:"12" }}
-              </p>
             </div>
           </div>
           {% endfor %}
