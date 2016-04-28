@@ -135,3 +135,7 @@ CKEDITOR_CONFIGS = {
         'skin': 'moono',
     }
 }
+
+if DEBUG == False:
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    ALLOWED_HOSTS = []
