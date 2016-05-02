@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import F
-from .models import Noticia, Categoria
+from blog.models import Noticia, Categoria
 
 def index(request):
     lista_noticias = Noticia.objects.all().order_by('-data_de_publicacao')

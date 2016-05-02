@@ -10,6 +10,7 @@ categorias = (
 	('Política','Política'),
 	('Tecnologia','Tecnologia'),
 	('Saúde','Saúde'),
+	('Culinária','Culinária'),
 	('Fatos Corriqueiros','Fatos Corriqueiros'),
 	('Música', 'Música'),
 	('Religião','Religião'),
@@ -26,13 +27,13 @@ class Categoria(models.Model):
 
 class Noticia(models.Model): 
 	imagem = models.ImageField(upload_to='noticias', blank=True)
-	autor = models.CharField(max_length=200)
 	titulo = models.CharField(max_length=100, verbose_name="Título")
+	autor = models.CharField(max_length=200)
 	categoria = models.ForeignKey(Categoria, default=1)
 	texto = RichTextField()
 	views = models.PositiveIntegerField(default=0)
-	data_de_publicacao = models.DateTimeField(verbose_name="Data de Publicação")
 	slug = models.SlugField()
+	data_de_publicacao = models.DateTimeField(verbose_name="Data de Publicação")
 	
 	def __str__(self):
 		return "%s / %s" % (self.titulo, self.categoria)

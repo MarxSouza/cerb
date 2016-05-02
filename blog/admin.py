@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils import timezone
 from django import forms
-from .models import Categoria, Noticia
+from blog.models import Categoria, Noticia
 		
 class CategoriaAdmin(admin.ModelAdmin):
 	prepopulated_fields = {'slug': ('titulo',)}
